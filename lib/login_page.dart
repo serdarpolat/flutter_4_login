@@ -8,9 +8,10 @@ class GirisSayfasi extends StatefulWidget {
 }
 
 class _GirisSayfasiState extends State<GirisSayfasi> {
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
-
     final logo = Hero(
       tag: 'hero',
       child: CircleAvatar(
@@ -54,8 +55,12 @@ class _GirisSayfasiState extends State<GirisSayfasi> {
           splashColor: Colors.white,
           color: Color(0xFFCF3785),
           padding: EdgeInsets.symmetric(vertical: 16.0),
-          child: Text('Giriş Yap', style: TextStyle(color: Colors.white, fontSize: 24.0),),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
+          child: Text(
+            'Giriş Yap',
+            style: TextStyle(color: Colors.white, fontSize: 24.0),
+          ),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
           onPressed: () {
             Navigator.of(context).pushNamed(AnaSayfa.tag);
           },
@@ -64,28 +69,38 @@ class _GirisSayfasiState extends State<GirisSayfasi> {
     );
 
     final sifremiUnuttum = FlatButton(
-      child: Text('Şifremi Unuttum', style: TextStyle(color: Colors.black87),),
+      child: Text(
+        'Şifremi Unuttum',
+        style: TextStyle(color: Colors.black87),
+      ),
       onPressed: () {},
     );
     return Scaffold(
-      backgroundColor: Colors.white,
       body: Center(
-        child: ListView(
-          shrinkWrap: true,
-          padding: EdgeInsets.only(left: 24.0, right: 24.0),
-          children: <Widget>[
-            logo,
-            SizedBox(height: 48.0,),
-            email,
-            SizedBox(height: 8.0,),
-            sifre,
-            SizedBox(height: 14.0,),
-            giriSBtn,
-            sifremiUnuttum
-          ],
+        child: Form(
+          key: _formKey,
+          child: ListView(
+            shrinkWrap: true,
+            padding: EdgeInsets.only(left: 24.0, right: 24.0),
+            children: <Widget>[
+              logo,
+              SizedBox(
+                height: 48.0,
+              ),
+              email,
+              SizedBox(
+                height: 8.0,
+              ),
+              sifre,
+              SizedBox(
+                height: 14.0,
+              ),
+              giriSBtn,
+              sifremiUnuttum
+            ],
+          ),
         ),
       ),
     );
   }
-  
 }
